@@ -35,7 +35,7 @@
 
 ## 📱 Demo
 
-**[🔗 Coming soon on Streamlit Cloud]()**
+**[🔗 Live App](https://pystreamflow-ai-ufg7wsp8pcxpatqt3lxrsk.streamlit.app/)**
 
 ---
 
