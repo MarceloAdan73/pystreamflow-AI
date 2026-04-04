@@ -35,7 +35,7 @@
 
 ## 📱 Demo
 
-<a href="https://pystreamflow-ai-ufg7wsp8pcxpatqt3lxrsk.streamlit.app/" target="_blank">🔗 Live App</a>
+🔗 **[Live App](https://pystreamflow-ai-ufg7wsp8pcxpatqt3lxrsk.streamlit.app/)** ↗️
 
 ---
 
