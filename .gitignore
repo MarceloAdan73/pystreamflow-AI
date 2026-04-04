@@ -1,0 +1,30 @@
+# Entorno virtual
+venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Base de datos local
+*.db
+
+# Token de HuggingFace
+.env
+
+# Streamlit secrets
+.streamlit/
+
+# IDE
+.vscode/
+.idea/
+
+# Archivos temporales
+*.log
+*.bak
+*.swp
+.DS_Store

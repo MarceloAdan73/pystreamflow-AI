@@ -1,0 +1,76 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pystreamflow"
+version = "1.1.0"
+description = "Aplicación web interactiva para control de finanzas personales"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "PyStreamFlow Team"}
+]
+requires-python = ">=3.10"
+keywords = ["finance", "budget", "streamlit", "personal-finance", "money-management", "pwa"]
+classifiers = [
+    "Development Status :: 5 - Production",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial",
+]
+
+dependencies = [
+    "streamlit>=1.30.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "plotly>=5.18.0",
+    "python-dotenv>=1.0.0",
+    "reportlab>=4.0.0",
+]
+
+[project.optional-dependencies]
+cloud = [
+    "supabase>=2.0.0",
+    "huggingface-hub>=0.20.0",
+]
+dev = [
+    "pytest>=8.0.0",
+    "black>=24.0.0",
+    "flake8>=7.0.0",
+]
+all = [
+    "supabase>=2.0.0",
+    "huggingface-hub>=0.20.0",
+    "pytest>=8.0.0",
+    "black>=24.0.0",
+    "flake8>=7.0.0",
+]
+
+[project.scripts]
+pystreamflow = "pystreamflow:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pystreamflow*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py310', 'py311', 'py312']
+include = '\.pyi?$'
+
+[tool.pytest.ini_options]
+testpaths = ["test_*.py"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "I", "N", "W"]
+ignore = ["E501"]

@@ -1,0 +1,1540 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+* {
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Reset y base */
+.stApp, [data-testid="stAppViewContainer"], header {
+    background-color: #0f172a !important;
+}
+
+section[data-testid="stSidebar"] {
+    background-color: rgba(30, 41, 59, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.main .block-container, h1, h2, h3, p, label, .stMarkdown {
+    color: #f8fafc !important;
+}
+
+/* Títulos principales - sin gradiente para mostrar emojis */
+h1 {
+    color: #f8fafc !important;
+    font-weight: 700;
+}
+
+/* Subtítulos con color accent */
+h2, h3 {
+    color: #f8fafc !important;
+}
+
+/* Botones base */
+.stButton button {
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+    border: none !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.stButton button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.stButton button[kind="primary"] {
+    background: linear-gradient(135deg, #6366F1, #8B5CF6) !important;
+    color: white !important;
+}
+
+.stButton button[kind="secondary"] {
+    background-color: rgba(51, 65, 85, 0.5) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    backdrop-filter: blur(5px);
+}
+
+.stButton button:disabled {
+    background-color: #1e293b !important;
+    color: #475569 !important;
+    opacity: 0.5;
+}
+
+/* Efecto Ripple en botones */
+.stButton button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.stButton button:active::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* Inputs */
+.stTextInput input, .stSelectbox select, .stDateInput input,
+div[role="radiogroup"] {
+    background-color: rgba(30, 41, 59, 0.6) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(5px);
+    transition: all 0.2s ease;
+}
+
+.stTextInput input:focus, .stSelectbox select:focus, .stDateInput input:focus {
+    border-color: #6366F1 !important;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+}
+
+/* Tarjetas de métricas */
+[data-testid="metric-container"] {
+    background: rgba(30, 41, 59, 0.5) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 20px !important;
+    padding: 16px !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+[data-testid="metric-container"]:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+    border-color: #6366F1 !important;
+}
+
+[data-testid="stMetricLabel"] {
+    color: #94a3b8 !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+}
+
+[data-testid="stMetricValue"] {
+    color: #f8fafc !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+}
+
+[data-testid="stMetricDelta"] {
+    font-size: 0.9rem !important;
+}
+
+/* Tarjetas de transacciones */
+.transaction-card {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+}
+
+.transaction-card:hover {
+    transform: translateX(4px);
+    border-color: #6366F1;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Transacción card con fade-out para eliminación suave */
+.transaction-card-deleting {
+    animation: fade-out-delete 0.5s ease-out forwards;
+}
+
+@keyframes fade-out-delete {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+}
+
+/* Tarjetas de presupuesto */
+.budget-card {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 12px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+/* Botón eliminar con modo confirmación - agrandar y vibrar */
+.btn-delete-all {
+    animation: pulse-vibrate 0.5s ease-in-out infinite;
+    transform: scale(1.05);
+}
+
+@keyframes pulse-vibrate {
+    0%, 100% { transform: scale(1.05) translateX(0); }
+    25% { transform: scale(1.05) translateX(-3px); }
+    75% { transform: scale(1.05) translateX(3px); }
+}
+
+.btn-delete-all:hover {
+    animation: pulse-vibrate 0.3s ease-in-out infinite;
+}
+
+/* Toast de eliminación */
+.toast-eliminado {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+    z-index: 9999;
+    animation: toast-fade-in 0.3s ease-out, toast-fade-out 0.5s ease-in 1.5s forwards;
+}
+
+@keyframes toast-fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toast-fade-out {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Expanders */
+.streamlit-expanderHeader {
+    background: rgba(30, 41, 59, 0.5) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 12px !important;
+    color: #f8fafc !important;
+}
+
+.streamlit-expanderContent {
+    background: rgba(30, 41, 59, 0.3) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-top: none !important;
+    border-radius: 0 0 12px 12px !important;
+}
+
+/* DataFrames */
+.stDataFrame, .dataframe {
+    background: transparent !important;
+}
+
+.dataframe th {
+    background: rgba(30, 41, 59, 0.7) !important;
+    color: #f8fafc !important;
+    border: none !important;
+    font-weight: 600 !important;
+}
+
+.dataframe td {
+    background: rgba(30, 41, 59, 0.4) !important;
+    color: #f8fafc !important;
+    border: none !important;
+    border-top: 1px solid rgba(255,255,255,0.05) !important;
+}
+
+/* Tooltips informativos */
+.tooltip-info {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.tooltip-info .tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 41, 59, 0.95);
+    color: #f8fafc;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    z-index: 1000;
+    transition: opacity 0.2s, visibility 0.2s;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.tooltip-info:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Widgets resumen del dashboard */
+.widget-resumen {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+    transition: all 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.widget-resumen:hover {
+    transform: translateY(-4px);
+    border-color: #6366F1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.widget-resumen .icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: #6366F1;
+}
+
+.widget-resumen .label {
+    color: #94a3b8;
+    font-size: 0.875rem;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.widget-resumen .value {
+    color: #f8fafc;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.widget-resumen .subvalue {
+    color: #6366F1;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Progreso circular */
+.progress-circle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.progress-circle svg {
+    transform: rotate(-90deg);
+}
+
+.progress-circle .percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: #94a3b8;
+    margin-bottom: 16px;
+    padding: 0 4px;
+}
+
+.breadcrumbs a {
+    color: #6366F1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.breadcrumbs a:hover {
+    color: #8B5CF6;
+    text-decoration: underline;
+}
+
+.breadcrumbs-separator {
+    color: #475569;
+    font-size: 0.75rem;
+}
+
+/* Fade-in al cambiar vista */
+.view-fade-in {
+    animation: view-fade-in 0.3s ease-out;
+}
+
+@keyframes view-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estado vacío amigable */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(30, 41, 59, 0.3);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.empty-state svg {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.empty-state h3 {
+    color: #f8fafc;
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+}
+
+.empty-state p {
+    color: #94a3b8;
+    margin-bottom: 24px;
+    font-size: 1rem;
+}
+
+.empty-state .btn-primary-large {
+    padding: 16px 32px !important;
+    font-size: 1.1rem !important;
+    min-width: 250px;
+}
+
+/* Barra de navegación superior */
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 0;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.top-nav .stButton {
+    flex: 0 1 auto;
+    min-width: 100px;
+    max-width: 140px;
+}
+
+.top-nav .stButton button {
+    background: transparent !important;
+    border: none !important;
+    color: #94a3b8 !important;
+    padding: 10px 14px !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+    width: 100% !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    box-shadow: none !important;
+}
+
+.top-nav .stButton button:hover {
+    background: rgba(99, 102, 241, 0.2) !important;
+    color: #f8fafc !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+}
+
+.top-nav .stButton button[kind="primary"] {
+    background: linear-gradient(135deg, #6366F1, #8B5CF6) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4) !important;
+    font-weight: 600 !important;
+}
+
+/* Títulos mejorados */
+.main h1, .main h2, .main h3 {
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.3 !important;
+}
+
+.main h1 {
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.main h2 {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 1rem !important;
+    padding-bottom: 0.5rem !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+.main h3 {
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.75rem !important;
+    color: #f8fafc !important;
+}
+
+/* Sección de métricas en el dashboard */
+.metrics-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.metrics-row > div {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Contenedor de gráficos */
+.charts-container {
+    display: flex;
+    gap: 24px;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.charts-container > div {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Tarjetas de transacciones - layout mejorado */
+.transaction-card {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+}
+
+.transaction-card:hover {
+    transform: translateX(4px);
+    border-color: #6366F1;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.transaction-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.transaction-card .card-amount {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.transaction-card .card-meta {
+    color: #94a3b8;
+    font-size: 0.875rem;
+}
+
+.transaction-card .card-desc {
+    color: #94a3b8;
+    font-size: 0.875rem;
+    margin-top: 8px;
+    padding-left: 32px;
+}
+
+/* Formularios mejorados */
+.stForm {
+    background: rgba(30, 41, 59, 0.3) !important;
+    padding: 24px !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+}
+
+.stForm .stTextInput,
+.stForm .stSelectbox,
+.stForm .stDateInput,
+.stForm .stNumberInput {
+    margin-bottom: 1rem !important;
+}
+
+/* Expander mejorado */
+.streamlit-expanderHeader {
+    background: rgba(30, 41, 59, 0.5) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 12px !important;
+    color: #f8fafc !important;
+    padding: 12px 16px !important;
+    font-weight: 500 !important;
+}
+
+.streamlit-expanderContent {
+    background: rgba(30, 41, 59, 0.3) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-top: none !important;
+    border-radius: 0 0 12px 12px !important;
+    padding: 16px !important;
+}
+
+/* Breadcrumbs mejorado */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+    padding: 8px 12px;
+    background: rgba(30, 41, 59, 0.3);
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.breadcrumbs a {
+    color: #6366F1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.breadcrumbs a:hover {
+    color: #8B5CF6;
+    text-decoration: underline;
+}
+
+/* Responsive Design - mejorado */
+@media (max-width: 992px) {
+    .main .block-container {
+        padding: 1.5rem !important;
+    }
+    
+    .charts-container > div {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .main .block-container {
+        padding: 1rem !important;
+    }
+    
+    h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    h2 {
+        font-size: 1.25rem !important;
+    }
+    
+    h3 {
+        font-size: 1rem !important;
+    }
+    
+    [data-testid="metric-container"] {
+        padding: 12px !important;
+    }
+    
+    [data-testid="stMetricValue"] {
+        font-size: 1.3rem !important;
+    }
+    
+    .transaction-card {
+        padding: 12px !important;
+    }
+    
+    .transaction-card .card-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    
+    .transaction-card .card-amount {
+        align-self: flex-end !important;
+    }
+    
+    .stButton button {
+        padding: 8px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 4px !important;
+        flex-wrap: wrap !important;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        padding: 8px 12px !important;
+        font-size: 0.85rem !important;
+        flex: 1 1 auto !important;
+        min-width: 120px !important;
+    }
+    
+    .budget-card {
+        padding: 16px !important;
+    }
+    
+    .budget-card > div {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    
+    .budget-card .stButton button {
+        width: 100% !important;
+    }
+    
+    /* Barra de navegación en móvil */
+    .top-nav {
+        padding: 8px 4px !important;
+        gap: 4px !important;
+        justify-content: flex-start !important;
+    }
+    
+    .top-nav .stButton {
+        min-width: 70px !important;
+        flex: 0 0 auto !important;
+    }
+    
+    .top-nav .stButton button {
+        padding: 8px 10px !important;
+        font-size: 0.75rem !important;
+    }
+    
+    /* Breadcrumbs en móvil */
+    .breadcrumbs {
+        flex-wrap: wrap !important;
+        font-size: 0.75rem !important;
+        gap: 4px !important;
+    }
+    
+    /* Widgets en móvil */
+    .widget-resumen {
+        margin-bottom: 16px !important;
+    }
+    
+    .empty-state {
+        padding: 40px 16px !important;
+    }
+    
+    .empty-state svg {
+        width: 150px !important;
+        height: 150px !important;
+    }
+    
+    .empty-state h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    /* Sidebar en móvil - convertir a menú desplegable */
+    [data-testid="stSidebar"] {
+        width: 280px !important;
+    }
+    
+    /* Columnas de filtros en móvil */
+    .filters-container {
+        flex-direction: column !important;
+    }
+    
+    .filters-container > div {
+        width: 100% !important;
+    }
+    
+    /* Gráficos ocupan todo el ancho */
+    .stPlotlyChart {
+        min-height: 300px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    [data-testid="column"] {
+        width: 100% !important;
+        min-width: 100% !important;
+        padding: 4px 0 !important;
+    }
+    
+    [data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        width: 100% !important;
+    }
+    
+    .stDateInput, .stSelectbox, .stNumberInput {
+        width: 100% !important;
+    }
+    
+    .stForm {
+        padding: 16px !important;
+    }
+    
+    .top-nav .stButton {
+        min-width: 60px !important;
+    }
+    
+    .top-nav .stButton button {
+        padding: 6px 8px !important;
+        font-size: 0.7rem !important;
+    }
+    
+    .empty-state .btn-primary-large {
+        min-width: 200px !important;
+        padding: 12px 24px !important;
+    }
+    
+    /* Ajustar métricas para pantallas muy pequeñas */
+    .metrics-row > div {
+        min-width: 100% !important;
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6366F1;
+    border-radius: 5px;
+    border: 2px solid #0f172a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8B5CF6;
+}
+
+/* Gráficos con bordes redondeados y mejor aspect ratio */
+.stPlotlyChart {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    background: rgba(30, 41, 59, 0.3) !important;
+    padding: 12px !important;
+    min-height: 350px !important;
+}
+
+/* Ajustes de gráficos Plotly */
+.js-plotly-plot .plotly .main-svg {
+    background: transparent !important;
+}
+
+/* Contenedor de tabs mejorado */
+.stTabs {
+    margin-bottom: 1.5rem !important;
+}
+
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px !important;
+    background: rgba(30, 41, 59, 0.3);
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: transparent !important;
+    border-radius: 8px !important;
+    padding: 10px 20px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.stTabs [data-baseweb="tab"][aria-selected="true"] {
+    background: linear-gradient(135deg, #6366F1, #8B5CF6) !important;
+    color: white !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover:not([aria-selected="true"]) {
+    background: rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Footer de la app */
+.app-footer {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+    font-size: 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 40px;
+}
+
+/* Separadores consistentes */
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    margin: 1.5rem 0;
+}
+
+/* Mensajes de info/warning/error mejorados */
+.stAlert {
+    border-radius: 12px !important;
+    padding: 16px !important;
+}
+
+div[data-testid="stMarkdownContainer"] p {
+    line-height: 1.6 !important;
+}
+
+/* Contenedor principal */
+.main-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Ajuste de columnas en dashboard */
+[data-testid="column"] {
+    padding: 0 8px !important;
+}
+
+[data-testid="stHorizontalBlock"] {
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+}
+
+/* Tarjetas de métricas con altura uniforme */
+[data-testid="metric-container"] {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+/* Labels y valores de métricas */
+[data-testid="stMetricLabel"] {
+    color: #94a3b8 !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+[data-testid="stMetricValue"] {
+    color: #f8fafc !important;
+    font-size: 1.75rem !important;
+    font-weight: 700 !important;
+}
+
+[data-testid="stMetricDelta"] {
+    font-size: 0.85rem !important;
+}
+
+/* ============================
+   SKELETON LOADERS
+   ============================ */
+
+@keyframes skeleton-pulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0.4; }
+}
+
+.skeleton {
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+    background: rgba(99, 102, 241, 0.2) !important;
+    border-radius: 8px !important;
+}
+
+.skeleton-text {
+    height: 16px;
+    margin-bottom: 8px;
+}
+
+.skeleton-card {
+    height: 80px;
+    margin-bottom: 12px;
+}
+
+.skeleton-metric {
+    height: 100px;
+    border-radius: 20px !important;
+}
+
+/* ============================
+   MICRO-INTERACTIONS
+   ============================ */
+
+/* Efecto de brillo en hover */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.btn-shimmer:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(99, 102, 241, 0.8) 0%,
+        rgba(139, 92, 246, 0.8) 50%,
+        rgba(99, 102, 241, 0.8) 100%
+    ) !important;
+    background-size: 200% 100% !important;
+    animation: shimmer 1.5s linear infinite !important;
+}
+
+/* Efecto de rebote en botones */
+@keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+.bounce-hover:hover {
+    animation: bounce-subtle 0.3s ease-in-out;
+}
+
+/* Efecto de confetti en guardado exitoso */
+@keyframes confetti-pop {
+    0% { transform: scale(0); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.confetti-success {
+    animation: confetti-pop 0.5s ease-out;
+}
+
+/* Efecto de shake en error */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.shake-error {
+    animation: shake 0.4s ease-in-out;
+}
+
+/* Transición suave en transiciones de vista */
+.view-transition {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Efecto glow en elementos importantes */
+.glow-effect {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5) !important;
+}
+
+/* Hover scale suave */
+.scale-hover {
+    transition: transform 0.2s ease-in-out;
+}
+
+.scale-hover:hover {
+    transform: scale(1.02);
+}
+
+/* ============================
+   TEMA CLARO
+   ============================ */
+
+.light-theme .stApp,
+.light-theme [data-testid="stAppViewContainer"],
+.light-theme header {
+    background-color: #f8fafc !important;
+}
+
+.light-theme section[data-testid="stSidebar"] {
+    background-color: rgba(241, 245, 249, 0.95) !important;
+}
+
+.light-theme .main .block-container,
+.light-theme h1,
+.light-theme h2,
+.light-theme h3,
+.light-theme p,
+.light-theme label,
+.light-theme .stMarkdown {
+    color: #1e293b !important;
+}
+
+.light-theme [data-testid="metric-container"] {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-theme .transaction-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .budget-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .streamlit-expanderHeader {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    color: #1e293b !important;
+}
+
+/* ============================
+   TUTORIAL ONBOARDING
+   ============================ */
+
+.onboarding-step {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+    border: 2px solid rgba(99, 102, 241, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 16px 0;
+}
+
+.onboarding-step h3 {
+    color: #8B5CF6 !important;
+    margin-bottom: 12px;
+}
+
+.onboarding-step p {
+    color: #cbd5e1 !important;
+    line-height: 1.6;
+}
+
+.onboarding-highlight {
+    background: linear-gradient(135deg, #6366F1, #8B5CF6);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Tooltip para tutoriales */
+.tutorial-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.tutorial-tooltip .tutorial-content {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #6366F1, #8B5CF6);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    width: 250px;
+    z-index: 1000;
+    transition: opacity 0.3s, visibility 0.3s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.tutorial-tooltip:hover .tutorial-content {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ============================
+   PWA SUPPORT
+   ============================ */
+
+/* Fullscreen en móviles */
+@media (display-mode: standalone) {
+    .stApp {
+        height: 100vh !important;
+        height: -webkit-fill-available !important;
+    }
+}
+
+/* Ocultar elementos innecesarios en PWA */
+@media (display-mode: standalone) {
+    .pwa-hide {
+        display: none !important;
+    }
+}
+
+/* Status bar color para iOS */
+apple-mobile-web-app-status-bar-style {
+    content: #0f172a;
+}
+
+/* ============================
+   ACCESIBILIDAD
+   ============================ */
+
+/* Focus visible para navegación por teclado */
+*:focus-visible {
+    outline: 2px solid #6366F1 !important;
+    outline-offset: 2px !important;
+}
+
+/* Reducir movimiento para usuarios con vestibular */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    [data-testid="metric-container"] {
+        border-width: 2px !important;
+    }
+    
+    .transaction-card {
+        border-width: 2px !important;
+    }
+}
+
+/* ============================
+   ASISTENTE IA DESTACADO
+   ============================ */
+
+/* Contenedor del chat IA */
+.ia-chat-container {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1));
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    border-radius: 16px;
+    padding: 16px;
+    margin: 12px 0;
+}
+
+.ia-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.ia-chat-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #6366F1, #8B5CF6);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.8), 0 0 30px rgba(139, 92, 246, 0.4);
+    }
+}
+
+.ia-chat-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f8fafc;
+    margin: 0;
+}
+
+.ia-chat-subtitle {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin: 0;
+}
+
+/* Consultas rápidas */
+.ia-quick-query {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin: 6px 0;
+    font-size: 0.85rem;
+    color: #f8fafc;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ia-quick-query:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.6);
+    transform: translateX(4px);
+}
+
+/* Respuesta del IA */
+.ia-response {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #f8fafc;
+    line-height: 1.5;
+}
+
+/* Tarjeta destacada del IA */
+.ia-featured-card {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.05));
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 16px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.ia-featured-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 60%);
+    animation: rotate-gradient 10s linear infinite;
+}
+
+@keyframes rotate-gradient {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================
+   NAVEGACIÓN CON BOTONES
+   ============================ */
+
+/* Botones de navegación modernos */
+[data-testid="stHorizontalBlock"] [data-testid="stButton"] button {
+    background: rgba(30, 41, 59, 0.5) !important;
+    border: 1px solid rgba(99, 102, 241, 0.2) !important;
+    border-radius: 10px !important;
+    color: #94a3b8 !important;
+    font-size: 0.7rem !important;
+    font-weight: 500 !important;
+    padding: 6px 4px !important;
+    height: auto !important;
+    min-height: 50px !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+    transition: all 0.25s ease !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+[data-testid="stHorizontalBlock"] [data-testid="stButton"] button:hover {
+    background: rgba(99, 102, 241, 0.25) !important;
+    border-color: rgba(99, 102, 241, 0.5) !important;
+    color: #f8fafc !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.3) !important;
+}
+
+[data-testid="stHorizontalBlock"] [data-testid="stButton"] button p {
+    font-size: 1.2rem !important;
+    margin: 0 auto !important;
+    line-height: 1 !important;
+    display: block !important;
+}
+
+/* Botón activo de navegación */
+[data-testid="stHorizontalBlock"] [data-testid="stButton"] button[kind="primary"] {
+    background: linear-gradient(135deg, #6366F1, #8B5CF6) !important;
+    border: none !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4) !important;
+}
+
+[data-testid="stHorizontalBlock"] [data-testid="stButton"] button[kind="primary"]:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.5) !important;
+}
+
+/* Responsive navegación - tablets */
+@media (max-width: 900px) {
+    [data-testid="stHorizontalBlock"] [data-testid="stButton"] button {
+        font-size: 0.65rem !important;
+        padding: 5px 2px !important;
+        min-height: 48px !important;
+    }
+    [data-testid="stHorizontalBlock"] [data-testid="stButton"] button p {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* Responsive navegación - móvil */
+@media (max-width: 768px) {
+    [data-testid="stHorizontalBlock"] {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+    }
+    [data-testid="stHorizontalBlock"] [data-testid="column"] {
+        flex: 1 1 calc(14.28% - 6px) !important;
+        min-width: calc(14.28% - 6px) !important;
+        max-width: calc(14.28% - 6px) !important;
+    }
+    [data-testid="stHorizontalBlock"] [data-testid="stButton"] button {
+        font-size: 0.55rem !important;
+        padding: 4px 2px !important;
+        min-height: 45px !important;
+        border-radius: 8px !important;
+    }
+    [data-testid="stHorizontalBlock"] [data-testid="stButton"] button p {
+        font-size: 1rem !important;
+        margin-bottom: 2px !important;
+    }
+}
+
+/* Móvil muy pequeño */
+@media (max-width: 480px) {
+    [data-testid="stHorizontalBlock"] [data-testid="column"] {
+        flex: 1 1 calc(28.5% - 6px) !important;
+        min-width: calc(28.5% - 6px) !important;
+        max-width: calc(28.5% - 6px) !important;
+    }
+}
+
+/* ============================
+   RESPONSIVE GENERAL MÓVIL
+   ============================ */
+
+@media (max-width: 768px) {
+    /* Contenido principal móvil - ancho completo */
+    [data-testid="stMainBlockContainer"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 8px !important;
+        margin-left: 0 !important;
+    }
+    
+    /* Sidebar más compacto en móvil */
+    [data-testid="stSidebar"] {
+        padding: 10px !important;
+    }
+    
+    [data-testid="stSidebar"] h3 {
+        font-size: 0.9rem !important;
+    }
+    
+    [data-testid="stSidebar"] h4 {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Métricas responsive general */
+@media (max-width: 768px) {
+    [data-testid="stMetric"] {
+        padding: 6px !important;
+    }
+    
+    [data-testid="stMetricValue"] {
+        font-size: 1rem !important;
+    }
+    
+    [data-testid="stMetricLabel"] {
+        font-size: 0.65rem !important;
+    }
+    
+    /* Cards de transacciones */
+    .transaction-card {
+        padding: 8px !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .transaction-card div {
+        font-size: 0.8rem !important;
+    }
+    
+    /* Gráficos */
+    .js-plotly-plot {
+        min-height: 200px !important;
+    }
+    
+    /* Formularios */
+    .stForm {
+        font-size: 0.85rem !important;
+    }
+    
+    /* Títulos de sección */
+    h1 {
+        font-size: 1.2rem !important;
+    }
+    
+    h2 {
+        font-size: 1rem !important;
+    }
+    
+    h3 {
+        font-size: 0.9rem !important;
+    }
+    
+    /* Navegación móvil compacta */
+    [data-testid="stHorizontalBlock"] [data-testid="stButton"] button {
+        font-size: 0.6rem !important;
+        padding: 4px 2px !important;
+        min-height: 38px !important;
+    }
+    
+    /* Inputs */
+    .stTextInput input {
+        font-size: 0.9rem !important;
+    }
+    
+    /* Select boxes */
+    .stSelectbox {
+        font-size: 0.85rem !important;
+    }
+}
