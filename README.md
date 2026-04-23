@@ -1,8 +1,8 @@
 # 💰 PyStreamFlow
 
-![CI](https://github.com/MarceloAdan73/pystreamflow-AI/actions/workflows/ci.yml/badge.svg)
-
 <div align="center">
+
+![CI](https://github.com/MarceloAdan73/pystreamflow-AI/actions/workflows/ci.yml/badge.svg)
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
