@@ -1,9 +1,10 @@
 # 💰 PyStreamFlow
 
+![CI](https://github.com/MarceloAdan73/pystreamflow-AI/actions/workflows/ci.yml/badge.svg)
+
 <div align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![CI](https://github.com/MarceloAdan73/pystreamflow-AI/actions/workflows/ci.yml/badge.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Plotly](https://img.shields.io/badge/Plotly-5.18+-3F4F25?style=for-the-badge&logo=plotly&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
