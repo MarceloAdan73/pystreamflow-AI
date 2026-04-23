@@ -3,11 +3,11 @@
 <div align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![CI](https://github.com/MarceloAdan73/pystreamflow-AI/actions/workflows/ci.yml/badge.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Plotly](https://img.shields.io/badge/Plotly-5.18+-3F4F25?style=for-the-badge&logo=plotly&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![CI](https://github.com/MarceloAdan73/pystreamflow-AI/actions/workflows/ci.yml/badge.svg)
 ![Tests](https://img.shields.io/badge/Tests-17%20passed-brightgreen?style=for-the-badge)
 ![PWA](https://img.shields.io/badge/PWA-Ready-00A98F?style=for-the-badge)
 ![Stars](https://img.shields.io/badge/Stars-⭐_bienvenido-orange?style=for-the-badge)
